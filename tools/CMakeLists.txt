@@ -5,6 +5,12 @@ target_link_libraries(rtrclient rtrlib)
 install(TARGETS rtrclient DESTINATION bin)
 install(FILES "rtrclient.1" DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
 
+add_executable(rtrclient_ws rtrclient_ws.c ${mustach} ${tommyds})
+target_link_libraries(rtrclient_ws rtrlib websockets)
+install(TARGETS rtrclient_ws DESTINATION bin)
+install(FILES "rtrclient_ws.1" DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
+
+
 add_executable(rpki-rov rpki-rov.c)
 target_link_libraries(rpki-rov rtrlib)
 install(TARGETS rpki-rov DESTINATION bin)
